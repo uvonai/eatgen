@@ -1,0 +1,33 @@
+project_id = "payenwkvrpoeurvovkli"
+
+[functions]
+  [functions.adjust-weekly-score]
+    verify_jwt = false
+  [functions.analyze-barcode]
+    verify_jwt = false
+  [functions.analyze-food]
+    verify_jwt = false
+  [functions.auth-email-hook]
+    verify_jwt = false
+  [functions.calculate-health-score]
+    verify_jwt = false
+  [functions.check-admin-status]
+    verify_jwt = false
+  [functions.check-device-scan]
+    verify_jwt = false
+  [functions.check-premium-scan]
+    verify_jwt = false
+  [functions.describe-food]
+    verify_jwt = false
+  [functions.get-daily-summary]
+    verify_jwt = false
+  [functions.get-progress-data]
+    verify_jwt = false
+  [functions.save-food-log]
+    verify_jwt = false
+  [functions.send-otp]
+    verify_jwt = false
+  [functions.upload-food-image]
+    verify_jwt = false
+  [functions.verify-otp]
+    verify_jwt = false

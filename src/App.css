@@ -1,0 +1,15 @@
+/*
+  App.css previously contained Vite starter layout styles (#root max-width/padding)
+  which can create unintended scroll/letterboxing inside native WebViews.
+  This file is intentionally minimal for a full-screen mobile app.
+*/
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+}
+
