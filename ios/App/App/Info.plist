@@ -47,5 +47,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+
+	<key>NSCameraUsageDescription</key>
+<string>EatGen uses the camera to scan food and analyze nutrition.</string>
+
+<key>NSPhotoLibraryUsageDescription</key>
+<string>EatGen accesses your gallery to analyze food images.</string>
+
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>EatGen may save analyzed food images to your library.</string>
 </dict>
 </plist>
