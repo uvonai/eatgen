@@ -3,7 +3,7 @@ workflows:
     name: EatGen iOS Build
 
     environment:
-      node: 18
+      node: 22
       xcode: latest
 
     scripts:
