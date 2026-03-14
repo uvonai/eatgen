@@ -6,6 +6,9 @@ workflows:
       node: 22
       xcode: latest
 
+    integrations:
+      app_store_connect: Codemagic
+
     scripts:
       - name: Install dependencies
         script: |
@@ -16,18 +19,31 @@ workflows:
         script: |
           npm run build
 
-      - name: Capacitor sync
+      - name: Sync Capacitor
         script: |
           npx cap sync ios
+
+      - name: Install CocoaPods
+        script: |
+          cd ios/App
+          pod install
 
       - name: Build iOS
         script: |
           cd ios/App
-          xcodebuild -project App.xcodeproj \
+          xcodebuild \
+          -workspace App.xcworkspace \
           -scheme App \
           -sdk iphoneos \
           -configuration Release \
           archive -archivePath build/App.xcarchive
 
+      - name: Export IPA
+        script: |
+          xcodebuild -exportArchive \
+          -archivePath ios/App/build/App.xcarchive \
+          -exportOptionsPlist ios/App/exportOptions.plist \
+          -exportPath build
+
     artifacts:
-      - ios/App/build/**/*
+      - build/**/*.ipa
