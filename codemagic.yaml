@@ -15,9 +15,13 @@ workflows:
           npm install
           npm install -g @capacitor/cli
 
-      - name: Build web
+      - name: Build web app
         script: |
           npm run build
+
+      - name: Generate iOS project
+        script: |
+          npx cap add ios || true
 
       - name: Sync Capacitor
         script: |
@@ -38,12 +42,5 @@ workflows:
           -configuration Release \
           archive -archivePath build/App.xcarchive
 
-      - name: Export IPA
-        script: |
-          xcodebuild -exportArchive \
-          -archivePath ios/App/build/App.xcarchive \
-          -exportOptionsPlist ios/App/exportOptions.plist \
-          -exportPath build
-
     artifacts:
-      - build/**/*.ipa
+      - ios/App/build/**/*.ipa
