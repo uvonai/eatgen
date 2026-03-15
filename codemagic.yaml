@@ -27,6 +27,11 @@ workflows:
         script: |
           npx cap sync ios
 
+      - name: Install CocoaPods
+        script: |
+          cd ios/App
+          pod install
+
       - name: Build iOS
         script: |
           cd ios/App
@@ -38,4 +43,4 @@ workflows:
           archive -archivePath build/App.xcarchive
 
     artifacts:
-      - ios/App/build/**/*.ipa
+      - ios/App/build/App.xcarchive
