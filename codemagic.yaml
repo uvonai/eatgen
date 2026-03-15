@@ -27,12 +27,12 @@ workflows:
 
       - name: Install CocoaPods
         script: |
-          cd ios/App
+          cd ios
           pod install
 
       - name: Build iOS archive
         script: |
-          cd ios/App
+          cd ios
           xcodebuild \
             -workspace App.xcworkspace \
             -scheme App \
