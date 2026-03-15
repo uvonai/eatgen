@@ -1,16 +1,14 @@
 workflows:
   ios-workflow:
     name: EatGen iOS Build
+    max_build_duration: 60
 
     environment:
-      node: 22
       xcode: latest
-
-    integrations:
-      app_store_connect: Codemagic
+      cocoapods: default
 
     scripts:
-      - name: Install dependencies
+      - name: Install npm dependencies
         script: |
           npm install
           npm install -g @capacitor/cli
@@ -23,7 +21,7 @@ workflows:
         script: |
           npx cap add ios || true
 
-      - name: Sync Capacitor
+      - name: Capacitor sync
         script: |
           npx cap sync ios
 
@@ -32,15 +30,12 @@ workflows:
           cd ios/App
           pod install
 
-      - name: Build iOS
+      - name: Build iOS archive
         script: |
           cd ios/App
           xcodebuild \
-          -workspace App.xcworkspace \
-          -scheme App \
-          -sdk iphoneos \
-          -configuration Release \
-          archive -archivePath build/App.xcarchive
-
-    artifacts:
-      - ios/App/build/App.xcarchive
+            -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath build/EatGen.xcarchive \
+            archive
